@@ -1,0 +1,13 @@
+.all{
+    background: url('../../../assets/dog-313357.jpg');
+    height: 100.598vh;
+    width: 100%;
+}
+.card{
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+.card-img{
+    height: 500px;
+    width: 100%;
+}

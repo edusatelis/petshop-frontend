@@ -1,0 +1,44 @@
+<form novalidate>
+
+    <div id="about" class="content container ml-2">
+        <div class="row">
+            <div class="col-md-8">
+                <h3 class="mb-4 mt-4"> Cadastro</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6" [formGroup]="form" >
+                <div class="form-group">
+                    <label for="Nome" class="text-sm-k text-regular">Nome</label>
+                    <input type="text" class="form-control input rounded-0" id="Nome" formControlName="nome" />
+                </div>
+                <div class="form-group">
+                    <label for="cpf" class="text-sm-k text-regular">CPF do Dono</label>
+                    <input type="text" class="form-control input rounded-0" id="cpf" formControlName="cpf" />
+                </div>
+                <div class="form-group">
+                    <label for="nomep" class="text-sm-k text-regular">Nome do Pet</label>
+                    <input type="text" class="form-control input rounded-0" id="nomep" formControlName="nomep" />
+                </div>
+                <div class="form-group">
+                    <label for="raca" class="text-sm-k text-regular">Raça do Pet</label>
+                    <input type="text" class="form-control input rounded-0" id="raca" formControlName="raca" />
+                </div>
+                <div class="form-group">
+                    <label for="anop" class="text-sm-k text-regular mb-0">Ano Nascimento Pet</label>
+                    <select class="form-control input rounded-0" formControlName="anop"> <option *ngFor="let item of birth" >{{item}}</option> </select>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="formFile" class="form-label">Foto Pet</label>
+                    <input class="form-control" type="file"  (change)="uploadFile($event)" formControlName="formFile"#file id="formFile">
+                  </div>
+            </div>
+        </div>
+        <div class="row  mt-5 mb-5">
+            <div class="col-md-2">
+                <button class="btn btn-block bg-success btn-lg rounded-0 text-bold text-white" routerLink="/pages/list" (click)="submit()" >CADASTRAR</button>
+            </div>
+        </div>
+     
+    </div>
+</form>
