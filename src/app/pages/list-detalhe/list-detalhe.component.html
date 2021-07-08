@@ -1,0 +1,74 @@
+<div class="row">
+    <div class="col-md-12 col-lg-6">
+        <h2 class="mb-3">Informações Animal</h2>
+
+        <div class="card mb-3">
+            <div class="card-body">
+                <dl class="row">
+                    <div class="col-md-6" [formGroup]="form" >
+                        <div class="form-group">
+                            <label for="Nome" class="text-sm-k text-regular">Nome</label>
+                            <input type="text" class="form-control input rounded-0" id="Nome" value={{request?.ownerName}} formControlName="nome" />
+                        </div>
+                        <div class="form-group">
+                            <label for="cpf" class="text-sm-k text-regular">CPF do Dono</label>
+                            <input type="text" class="form-control input rounded-0" id="cpf" value={{request?.ownerCpf}} formControlName="cpf" />
+                        </div>
+                        <div class="form-group">
+                            <label for="nomep" class="text-sm-k text-regular">Nome do Pet</label>
+                            <input type="text" class="form-control input rounded-0" id="nomep" value={{request?.petName}} formControlName="nomep" />
+                        </div>
+                        <div class="form-group">
+                            <label for="raca" class="text-sm-k text-regular">Raça do Pet</label>
+                            <input type="text" class="form-control input rounded-0" id="raca" value={{request?.breedDog}} formControlName="raca" />
+                        </div>
+                        <div class="form-group">
+                            <label for="anop" class="text-sm-k text-regular mb-0">Ano Nascimento Pet</label>
+                            <select value={{request?.yearBirth}} class="form-control input rounded-0" formControlName="anop"> <option *ngFor="let item of birth" >{{item}}</option> </select>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="formFile" class="form-label">Foto Pet</label>
+                            <input class="form-control" type="file"  (change)="uploadFile($event)" formControlName="formFile"#file id="formFile">
+                          </div>
+                    </div>
+                </dl>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-12 col-lg-6">
+
+        <div class="row">
+            <div class="col-md-6 col-lg-6">
+                <h2 class="mb-3">Foto do Animal</h2>
+
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <img src={{request?.img}} alt="img" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mb-3">
+    <div class="col-md-12 col-lg-12">
+        <button [routerLink]="['/pages/list']"  (click)="submit()"  class="btn btn-success btn-lg float-right">
+            <i class="fas fa-check"></i> Salvar
+        </button>
+        <button [routerLink]="['/pages/list']"  class="btn btn-danger btn-lg float-right mr-2">
+            <i class="fas fa-times"></i> Cancelar
+        </button>
+    </div>
+</div>
+
+<!-- <swal #approveSwal title='Confirmation' text='Do you want to APPROVE this KYC?' icon='success'
+    [confirmButtonText]='"Yes"' [showDenyButton]="true" [focusDeny]="true"
+    (confirm)="approve()">
+</swal>
+
+<swal #disapproveSwal title='Confirmation' text='Do you want to DISAPPROVE this KYC?' icon='error'
+    [confirmButtonText]='"Yes"' [showDenyButton]="true" [focusDeny]="true"
+    (confirm)="disapprove()">
+</swal> -->

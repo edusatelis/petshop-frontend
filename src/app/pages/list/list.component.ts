@@ -19,4 +19,16 @@ export class ListComponent implements OnInit {
       this.apiSrv.pets().subscribe(pets => this.list = pets )
   }
 
+  setLocal(id:string){
+    localStorage.setItem("id", id);
+  }
+
+  deletar(id: any){
+    this.apiSrv.deletar(id).subscribe(
+      pet => {
+        alert("Pet Deletado!!");
+        window.location.reload()
+      }
+    )
+  }
 }

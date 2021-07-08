@@ -15,6 +15,7 @@ export class CadastroComponent implements OnInit {
   birth: number[] = [];
   form!: FormGroup;
   data: any;
+  date: any;
   img: any;
   constructor(
     private fb: FormBuilder, 
@@ -39,8 +40,8 @@ export class CadastroComponent implements OnInit {
   }
   
   getyear(){
-    const date = new Date;
-    for(var i = date.getFullYear(); i>= (date.getFullYear() - 30); i-- ){
+    this.date = new Date;
+    for(var i = this.date.getFullYear(); i>= (this.date.getFullYear() - 30); i-- ){
       this.birth.push(i);
     }
   }
@@ -53,20 +54,18 @@ export class CadastroComponent implements OnInit {
       ownerCpf: this.form.get('cpf')?.value,
       petName: this.form.get('nomep')?.value,
       breedDog: this.form.get('raca')?.value,
-      yearBirth: this.form.get('anop')?.value,
+      yearBirth: this.form.get('anop')?.value || this.date.getFullYear(),
       img: this.img
       
     }
-    console.log(this.data)
     this.apiSrv.cadastro(this.data).subscribe(
       success => {
         if(success){
           alert("Cadastrado com Sucesso");
-          this.runCreateSuccess();
         }
       },
       error => {
-        this.runError(error);
+        console.error(error);
       }
     ) 
   }
@@ -75,43 +74,11 @@ export class CadastroComponent implements OnInit {
     var reader = new FileReader();
     reader.readAsDataURL(e.target.files[0]);
     reader.onload = () =>{
-      const toastr = this.toastrService.success('Sucess', 'File Uploaded', {});
-      if (toastr) {
-        toastr.onHidden.subscribe(() => {
-          this.img = reader.result?.toString()
-        });
-        return;
+        return this.img = reader.result?.toString()
       }
-    };
     reader.onerror = (err) =>{
-      const toastr = this.toastrService.error('Error', 'error sending', {});
-      if (toastr) {
-        toastr.onHidden.subscribe(() => {
-          console.log('Error ', err);
-        });
-        return;
+      
+          return console.log('Error ', err);
       }
     }
   }
-  runCreateSuccess(): void {
-    const toastr = this.toastrService.success('Pet Cadastrado!!', 'Success');
-    if (toastr) {
-        toastr.onHidden.subscribe(() => {
-            this.form.reset();
-            this.ngxSpinnerService.hide();
-        });
-    }
-}
-
-runError(exception: any) {
-    const toastr = this.toastrService.error(exception.error.erros[0], 'Error', {
-        progressBar: true
-    });
-
-    if (toastr)
-        toastr.onHidden.subscribe(() => {
-            this.ngxSpinnerService.hide();
-        });
-}
-
-}

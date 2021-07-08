@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CadastroComponent } from './cadastro/cadastro.component';
 import { ListComponent } from './list/list.component';
+import { ListDetalheComponent } from './list-detalhe/list-detalhe.component';
 
 const pagesRoute: Routes = [
   {
@@ -12,6 +13,8 @@ const pagesRoute: Routes = [
       { path: 'home', component: HomeComponent },
       { path: 'cadastro', component: CadastroComponent },
       { path: 'list', component: ListComponent },
+      { path: 'list-detalhe/:id', component: ListDetalheComponent},
+
     ]
   }
 ];

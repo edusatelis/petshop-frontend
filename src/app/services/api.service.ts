@@ -21,7 +21,7 @@ export class ApiService extends BaseService {
     pets(): Observable<IPets[]>{
         return this.http.get(`${environment.API_URL}/auth/pets`)
         .pipe(
-            map((response: any) => response.prototype.toJson())
+            map((response: any) => response)
         );
     }
 
@@ -32,5 +32,23 @@ export class ApiService extends BaseService {
         )
     } 
 
+    getById(id: any): Observable<any>{
+        return this.http.get(`${environment.API_URL}/auth/pets/${id}`, this.anonymousHeader()).pipe(
+            map((response: any) => response)
+        )
+    }
+
+    editar(id:string,body: any):Observable<any>{
+        return this.http.put(`${environment.API_URL}/auth/pets/${id}`, body, this.anonymousHeader()).pipe(
+            map(this.extractData),
+            catchError(this.serviceError)
+        )
+    } 
     
+    deletar(id:string):Observable<any>{
+        return this.http.delete(`${environment.API_URL}/auth/pets/${id}`, this.anonymousHeader()).pipe(
+            map(this.extractData),
+            catchError(this.serviceError)
+        )
+    } 
 }

@@ -1,12 +1,40 @@
-<div>
-    <div class="container">
-        <div class="card bg-dark text-white">
-            <img src="./../../../assets/cat-2143332_640.jpg" class="card-img" alt="...">
-            <div class="card-img-overlay">
-              <h5 class="card-title">PETSHOP</h5>
-              <p class="card-text">Seu Pet tem estilo! Mas nós temos todos!</p>
-              <p class="card-text"></p>
-            </div>
-          </div>
-    </div>
+<div class="card">
+  <div class="card-body">
+      <div class="table-responsive">
+          <table class="table table-sm table-hover table-striped">
+              <thead class="thead-dark">
+                  <tr>
+                      <th scope="col" class="text-center">CPF</th>
+                      <th scope="col">Nome do Dono</th>
+                      <th scope="col">Nome do Pet</th>
+                      <th scope="col" class="text-center">Ano Nascimento</th>
+                      <th scope="col" class="text-center">Raça</th>
+                      <th scope="col" class="text-center">Ações</th>
+                      <th scope="col"></th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr
+                      *ngFor="let item of list; let i= index">
+                      <td class="text-center">{{item.ownerCpf}}</td>
+                      <td>{{item.ownerName}}</td>
+                      <td>{{item.petName}}</td>
+                      <td class="text-center">{{item.yearBirth}}</td>
+                      <td class="text-center">{{item.breedDog}}</td>
+                      <td class=" table_icon">
+                          <a [routerLink]="['/pages/list-detalhe', item._id]"
+                          class=" btn btn-warning" placement="top"  (click)="setLocal(item._id)" ngbTooltip="Editar">
+                          <i class="fas fa-pencil-alt"></i>
+                          </a>
+                          <a (click)="deletar(item._id)"
+                          class=" btn btn-danger" placement="top" ngbTooltip="Deletar">
+                          <i class="fas fa-trash-alt"></i>
+                      </a>
+                      </td>
+                  </tr>
+                  <tr *ngIf="list.length == 0">
+                    <p class="text-center">NÃO HÁ ANIMAIS CADASTRADOS</p>
+                  </tr>
+              </tbody>
+          </table>
 </div>

@@ -11,6 +11,8 @@ export class PagesComponent implements OnInit, DoCheck {
   isHome: boolean = false;
   isCadastro: boolean = false;
   isList: boolean = false;
+  isListDetalhe: boolean = false;
+
 
   constructor() { }
 
@@ -19,6 +21,7 @@ export class PagesComponent implements OnInit, DoCheck {
     
     this.isCadastro = path === '/pages/cadastro' ? true : false;
     this.isList = path === '/pages/list' ? true : false;
+    this.isListDetalhe = path === `/pages/list-detalhe/${localStorage.getItem("id")}` ? true : false;
     this.isHome = path === '/pages/home' ? true : false;
   }
 

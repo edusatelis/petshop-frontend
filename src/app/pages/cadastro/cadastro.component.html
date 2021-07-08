@@ -10,19 +10,39 @@
             <div class="col-md-6" [formGroup]="form" >
                 <div class="form-group">
                     <label for="Nome" class="text-sm-k text-regular">Nome</label>
-                    <input type="text" class="form-control input rounded-0" id="Nome" formControlName="nome" />
+                    <input type="text" class="form-control input rounded-0" id="Nome" formControlName="nome" 
+                    [ngClass]="{ 'is-invalid': form.controls.nome.invalid && form.controls.nome.dirty, 'is-valid': form.controls.nome.valid }">
+                    <span class="text-danger"
+                        *ngIf="form.controls.nome.invalid && form.controls.nome.dirty">
+                        <p *ngIf="form.controls.nome.errors">Nome e requerido!</p>
+                    </span>
                 </div>
                 <div class="form-group">
                     <label for="cpf" class="text-sm-k text-regular">CPF do Dono</label>
-                    <input type="text" class="form-control input rounded-0" id="cpf" formControlName="cpf" />
-                </div>
+                    <input type="text" class="form-control input rounded-0" id="cpf" formControlName="cpf" 
+                    [ngClass]="{ 'is-invalid': form.controls.cpf.invalid && form.controls.cpf.dirty, 'is-valid': form.controls.cpf.valid }"/>
+                    <span class="text-danger"
+                        *ngIf="form.controls.cpf.invalid && form.controls.cpf.dirty">
+                        <p *ngIf="form.controls.cpf.errors">CPF e requerido!</p>
+                    </span>
+                    </div>
                 <div class="form-group">
                     <label for="nomep" class="text-sm-k text-regular">Nome do Pet</label>
-                    <input type="text" class="form-control input rounded-0" id="nomep" formControlName="nomep" />
+                    <input type="text" class="form-control input rounded-0" id="nomep" formControlName="nomep" 
+                    [ngClass]="{ 'is-invalid': form.controls.nomep.invalid && form.controls.nomep.dirty, 'is-valid': form.controls.nomep.valid }"/>
+                    <span class="text-danger"
+                        *ngIf="form.controls.nomep.invalid && form.controls.nomep.dirty">
+                        <p *ngIf="form.controls.nomep.errors">Nome do Pet e requerido!</p>
+                    </span>
                 </div>
                 <div class="form-group">
                     <label for="raca" class="text-sm-k text-regular">Raça do Pet</label>
-                    <input type="text" class="form-control input rounded-0" id="raca" formControlName="raca" />
+                    <input type="text" class="form-control input rounded-0" id="raca" formControlName="raca" 
+                    [ngClass]="{ 'is-invalid': form.controls.raca.invalid && form.controls.raca.dirty, 'is-valid': form.controls.raca.valid }"/>
+                    <span class="text-danger"
+                        *ngIf="form.controls.raca.invalid && form.controls.raca.dirty">
+                        <p *ngIf="form.controls.raca.errors">Raça e requerida!</p>
+                    </span>
                 </div>
                 <div class="form-group">
                     <label for="anop" class="text-sm-k text-regular mb-0">Ano Nascimento Pet</label>
@@ -34,9 +54,9 @@
                   </div>
             </div>
         </div>
-        <div class="row  mt-5 mb-5">
+        <div class="row mb-5">
             <div class="col-md-2">
-                <button class="btn btn-block bg-success btn-lg rounded-0 text-bold text-white" routerLink="/pages/list" (click)="submit()" >CADASTRAR</button>
+                <button class="btn btn-block bg-success btn-lg rounded-0 text-bold text-white" routerLink="/pages/list" (click)="submit()" [disabled]="form.invalid" >CADASTRAR</button>
             </div>
         </div>
      

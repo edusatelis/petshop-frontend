@@ -1,16 +1,15 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+
 import { AppComponent } from './app.component';
-import { HomeComponent } from './pages/home/home.component';
-import { CadastroComponent } from './pages/cadastro/cadastro.component';
-import { ListComponent } from './pages/list/list.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { AppRoutingModule } from './app-routing.module';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { ApiService } from './services/api.service';
-import { BaseService } from './services/baseService.service';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -35,11 +34,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CommonModule,
     RouterModule,
     PagesRoutingModule,
+    NgbModule,
+    SweetAlert2Module.forRoot(),
     FormsModule,
     ReactiveFormsModule,
     NgxSpinnerModule,
     ToastrModule.forRoot({
-      positionClass: 'toast-bottom-left',
+      positionClass: 'toast-top-right',
     })
   ],
   providers: [

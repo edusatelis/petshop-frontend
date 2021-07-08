@@ -1,4 +1,4 @@
-import { RouterModule } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PagesComponent } from './pages.component';
@@ -12,7 +12,8 @@ import { ListComponent } from './list/list.component';
 import { PagesRoutingModule } from './pages-routing.module';
 import { ApiService } from '../services/api.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ListDetalheComponent } from './list-detalhe/list-detalhe.component'
 
 
 @NgModule({
@@ -20,10 +21,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
     PagesComponent,
     HomeComponent,
     CadastroComponent,
-    ListComponent
+    ListComponent,
+    ListDetalheComponent
 
   ],
-  imports: [
+  imports: [  
     HttpClientModule,
     CommonModule,
     RouterModule,
@@ -32,10 +34,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
     ReactiveFormsModule,
     NgxSpinnerModule,
     ToastrModule.forRoot({
-      positionClass: 'toast-bottom-left',
+      positionClass: 'toast-top-right',
     })
   ],
   exports:[
+    CommonModule,
+    ReactiveFormsModule,
+    FormsModule,
     HomeComponent,
     CadastroComponent,
     ListComponent    

@@ -6,5 +6,5 @@ import { RouterOutlet } from '@angular/router';
   templateUrl: './app-component.html'
 })
 export class AppComponent {
-  title = 'frontend';
+  title = 'PetShop';
 }
